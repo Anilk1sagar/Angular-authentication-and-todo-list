@@ -1,0 +1,17 @@
+.signup-container {
+    background-color: #fff;
+    width: 40%;
+    padding: 20px;
+    margin: 100px auto;
+    box-shadow: 0px 0px 10px #666;
+    border-radius: 4px;
+}
+
+.signup-container h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.signup-container mdl-textfield {
+    width: 100%;
+}

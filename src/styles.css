@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background: #E2E4E6;
+    margin: 0;
+    padding: 0;
+}
+
+.mdl-layout__drawer-button {
+    color: #111 !important;
+}
+
+.mdl-button {
+    text-transform: none;
+}
+
+.mdl-textfield__input {
+    margin-top: 10px !important;
+}
+
+/* .mdl-textfield__label::after {
+    background-color: #fff !important;
+} */
+
+.loading {
+    width: 30px;
+    height: 30px;
+    border: 5px solid #5bc0de;
+    position: fixed;
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    border-radius: 50%;
+}
+
+
+.loading:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 10px;
+    background: #E2E4E6;
+    top: 10px;
+    left: -5px;
+    animation: spin 1.2s infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+@media only screen and (max-width: 1024px){
+    .mdl-layout__drawer-button {
+        color: #111 !important;
+    }
+}

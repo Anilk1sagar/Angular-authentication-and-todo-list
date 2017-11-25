@@ -1,0 +1,51 @@
+<!-- <h4 *ngIf="authService.user | async as user">Welcome {{ (authService.user | async)?.email }}!</h4>
+
+<h3>This is home page</h3>
+
+<div *ngIf="authService.user | async as user">
+    <h1>hello you!</h1>
+    <h3>Howdy, {{ user.displayName }}</h3>
+    <img [src]="user.photoURL">
+    <p>UID: {{ user.uid }}</p>
+    <button mdl-button mdl-button-type="raised" mdl-colored mdl-ripple (click)="logout()" *ngIf="authService.user | async">
+        Logout
+    </button>
+</div> -->
+
+<div class="demo-container" mdl-shadow="2">
+    <mdl-layout mdl-layout-fixed-header>
+        <mdl-layout-header>
+            <mdl-layout-header-row>
+                <mdl-layout-title>Angular</mdl-layout-title>
+                <mdl-layout-spacer></mdl-layout-spacer>
+                
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only" id="main-nav">
+                    <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active current">Home</a>
+                    <a class="mdl-navigation__link" routerLink="/Profile" routerLinkActive="active current">Profile</a>
+                    <a class="mdl-navigation__link" routerLink="/Service" routerLinkActive="active current">Service</a>
+                    <button *ngIf="authService.user | async as user" id="profile-btn" mdl-button #btn1="mdlButton" (click)="m1.toggle($event, btn1)" mdl-button-type="icon" mdl-ripple><img [src]="user.photoURL" width="100%"></button>
+                    <mdl-menu  #m1="mdlMenu" mdl-menu-position="bottom-right">
+                        <mdl-menu-item *ngIf="authService.user | async as user" mdl-ripple>{{ user.displayName }}</mdl-menu-item>
+                        <mdl-menu-item *ngIf="authService.user | async as user" mdl-ripple (click)="logout()">Logout</mdl-menu-item>
+                    </mdl-menu>
+                </nav>
+                <mdl-textfield  type="search" [(ngModel)]="search" icon="search" id="search-field"></mdl-textfield>
+            </mdl-layout-header-row>
+        </mdl-layout-header>
+        <mdl-layout-drawer>
+            <mdl-layout-title>Angular</mdl-layout-title>
+            <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active current">Home</a>
+                    <a class="mdl-navigation__link" routerLink="/Profile" routerLinkActive="active current">Profile</a>
+                    <a class="mdl-navigation__link" routerLink="/Service" routerLinkActive="active current">Service</a>
+                    <a class="mdl-navigation__link" routerLink="/" (click)="logout()" >Logout</a>
+            </nav>
+        </mdl-layout-drawer>
+
+        <!-- Main Content Area -->
+        <mdl-layout-content>
+            <h3>This is home page section</h3>
+        </mdl-layout-content>
+    </mdl-layout>
+</div>

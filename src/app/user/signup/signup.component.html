@@ -1,0 +1,15 @@
+<div *ngIf="!(authService.user | async)" class="signup-container">
+    <h3>Sign Up</h3>
+    <mdl-textfield type="text" label="Email" [(ngModel)]="email" floating-label></mdl-textfield><br>
+    <mdl-textfield type="password" label="Password" [(ngModel)]="password" floating-label></mdl-textfield><br>
+    <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple (click)="signup()" [disabled]="!email || !password">
+        Signup
+    </button>
+    <a routerLink="/login" mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple>Login</a>
+</div>
+
+<!-- If user logged in -->
+<div *ngIf="(authService.user | async)">
+    <h3>You are already Logged In please go back to</h3>
+    <a mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple routerLink="/home">Home</a>
+</div>
