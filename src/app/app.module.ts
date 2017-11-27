@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 import { AuthService } from './auth.service';
 import { routes } from './app.routes';
@@ -48,7 +49,7 @@ export const firebaseConfig = {
 		routes,
 		MdlModule,
 	],
-	providers: [AuthService, AuthGuard],
+	providers: [AuthService, AuthGuard, AngularFireDatabase],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

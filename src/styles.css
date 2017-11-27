@@ -8,6 +8,25 @@ body {
     color: #111 !important;
 }
 
+.mdl-tooltip {
+    background-color: #000 !important;
+    border-radius: 4px;
+}
+
+
+.mdl-tooltip::before {
+    content: '';
+    position: absolute;
+    left: 42%;
+    top: -5px;
+    clear: both;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+}
+
 .mdl-button {
     text-transform: none;
 }
