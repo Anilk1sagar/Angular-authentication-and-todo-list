@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdlModule } from '@angular-mdl/core';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
 
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdlModule } from '@angular-mdl/core';
 import { MdlDialogService, MdlSnackbarService } from '@angular-mdl/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -25,11 +25,6 @@ export class HomeComponent implements OnInit {
 		public authService: AuthService,
 		private router: Router,
 		private mdlSnackbarService: MdlSnackbarService) {}
-	
-	/// For logout
-	logout() {
-		this.authService.logout();
-	}
 
 	/// Adding todo
 	addTodo(value: string): void {

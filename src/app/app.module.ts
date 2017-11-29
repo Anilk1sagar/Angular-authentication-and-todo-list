@@ -9,7 +9,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { routes } from './app.routes';
 import { AuthGuard } from './auth.guard';
 
@@ -19,6 +19,9 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './user/login/login.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { MoviesComponent } from './movies/movies.component';
+import { StarReviewComponent } from './star-review/star-review.component';
+import { StarService } from './services/star.service';
 
 export const firebaseConfig = {
 	production: false,
@@ -37,7 +40,9 @@ export const firebaseConfig = {
 		HomeComponent,
 		LoginComponent,
 		SignupComponent,
-		UserProfileComponent
+		UserProfileComponent,
+		MoviesComponent,
+		StarReviewComponent
 	],
 	imports: [
 		BrowserModule,
@@ -49,7 +54,7 @@ export const firebaseConfig = {
 		routes,
 		MdlModule,
 	],
-	providers: [AuthService, AuthGuard, AngularFireDatabase],
+	providers: [AuthService, AuthGuard, AngularFireDatabase, StarService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

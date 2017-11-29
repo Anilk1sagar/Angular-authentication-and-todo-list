@@ -1,0 +1,6 @@
+<div *ngIf="movie | async as m" class="star-review-container">
+    <h2>{{ m.title }}</h2>
+    <img [src]="m.image" width="200px">
+	<p>{{ m.plot }}</p>
+    <app-star-review [movieId]="movieId" [userId]="userId"></app-star-review>
+</div>
