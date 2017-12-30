@@ -2,12 +2,9 @@
 {{ avgRating | async }}
 
 <h4>Reviews</h4>
-
-<div *ngFor="let star of stars | async">
-	<h6 *ngIf="authService.user | async as user">{{ user.displayName }}</h6>
-	<strong>gave</strong>
-	{{ star.movieId }} {{ star.value }} stars
-</div>
+<ul>
+	<li *ngFor="let star of stars | async"><strong>User:</strong> {{ star.userEmail }}<strong> gave </strong>{{ star.movieId }} {{ star.value }} stars</li>
+</ul>
 
 <h4>Post your Review</h4>
 
@@ -29,3 +26,10 @@
 		<label class="half" [for]="'halfstar'+num"></label>
 	</ng-container>
 </fieldset><br><br>
+
+<button class="primary" mdl-button mdl-button-type="raised" mdl-ripple>Primary</button>
+<button class="success" mdl-button mdl-button-type="raised" mdl-ripple>Success</button>
+<button class="danger" mdl-button mdl-button-type="raised" mdl-ripple>Danger</button>
+<button class="warning" mdl-button mdl-button-type="raised" mdl-ripple>Warning</button>
+<button class="info" mdl-button mdl-button-type="raised" mdl-ripple>info</button>
+<button class="dark" mdl-button mdl-button-type="raised" mdl-ripple>dark</button>

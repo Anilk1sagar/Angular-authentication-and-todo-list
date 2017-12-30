@@ -6,20 +6,14 @@ import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
+import { Observable } from "rxjs";
 import 'rxjs/add/operator/switchMap';
-
-interface User {
-	uid: string;
-	email: string;
-	photoURL?: string;
-	displayName?: string;
-}
+import { User } from '../models/user';
 
 @Injectable()
 export class AuthService {
 
-	//error: string = '';
 	user: Observable<User>;
 
 	authState: any = null;
@@ -31,11 +25,11 @@ export class AuthService {
 		this.user = this.firebaseAuth.authState
 			.switchMap(user => {
 				if (user) {
-					return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+					return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
 				} else {
 					return Observable.of(null)
 				}
-			})
+			});
 	}
 
 	// Returns true if user is logged in
@@ -43,6 +37,14 @@ export class AuthService {
 		return this.authState !== null;
 	}
 
+	//for Redirection after Login
+	loginRedirect() {
+		Observable.interval()
+		.take(1)
+		.subscribe(() => {
+			this.router.navigate(['/home']);
+		});
+	}
 
 	///Google sign in
 	googleLogin() {
@@ -107,13 +109,23 @@ export class AuthService {
 		const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
 		const data: User = {
-			uid: user.uid || null,
-			email: user.email || null,
-			displayName: user.displayName || null,
-			photoURL: user.photoURL || null,
+			uid: user.uid,
+			email: user.email,
+			password: user.password,
+			displayName: user.displayName,
+			photoURL: user.photoURL
 		}
 		this.router.navigate(['/home']);
-		return userRef.set(data);
+		//return userRef.set(data);
+		return  userRef.update(data)
+		.then(() => {
+		  // update successful (document exists)
+		  	console.log('User exists');
+		})
+		.catch((error) => {
+		  	//console.log('Error updating user', error); // (document does not exists)
+		  	userRef.set(data);
+		})
 	}
 
 

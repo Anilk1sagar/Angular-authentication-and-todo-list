@@ -1,0 +1,29 @@
+<div class="container"><br>
+	<app-add-post></app-add-post><br>
+	<h4 style="text-align:center"><u>Posts</u></h4>
+	<mdl-list *ngFor="let post of posts">
+		<mdl-list-item mdl-shadow="2">
+			<mdl-list-item-primary-content>
+				<strong>{{ post.title }}:</strong> {{ post.description }}
+			</mdl-list-item-primary-content>
+			<mdl-list-item-secondary-content>
+				<i *ngIf = "!editState"  (click) = "editPost($event, post)" class="fa fa-pencil"></i>
+				<i *ngIf = "editState && postToEdit.id == post.id" (click) = "clearState()" class="fa fa-compress" aria-hidden="true"></i>
+			</mdl-list-item-secondary-content>
+		</mdl-list-item>
+		<div *ngIf = "editState && postToEdit.id == post.id" style="text-align:center">
+			<form (ngSubmit) = "updatePost(post)">
+				<div class="row">
+					<mdl-textfield type="text" [(ngModel)]="post.title" name="title" floating-label></mdl-textfield>
+					<mdl-textfield type="text" [(ngModel)]="post.description" name="description" floating-label></mdl-textfield>
+					<button type="submit" name="submit" class="warning" mdl-button mdl-button-type="raised" mdl-ripple>
+						Update Post
+					</button>
+					<button class="danger" mdl-button mdl-button-type="raised" mdl-ripple (click) = "deletePost($event, post)">
+						Delete Post
+					</button>
+				</div>
+			</form>
+		</div>
+	</mdl-list>
+</div>

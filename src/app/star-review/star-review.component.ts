@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class StarReviewComponent implements OnInit {
 
-	@Input() userId;
+	@Input() userEmail;
 	@Input() movieId;
 
 	stars: Observable<any>;
@@ -29,7 +29,7 @@ export class StarReviewComponent implements OnInit {
 	}
 
 	starHandler(value) {
-		this.starService.setStar(this.userId, this.movieId, value)
+		this.starService.setStar(this.userEmail, this.movieId, value)
 	}
 
 }

@@ -1,0 +1,13 @@
+mdl-card {
+    width: 100%;
+    min-height: auto;
+    text-align: center;
+
+    mdl-card-supporting-text {
+        padding: 8px;
+    }
+
+    button {
+        margin-top: -10px !important;
+    }
+}

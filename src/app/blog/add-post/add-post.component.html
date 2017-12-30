@@ -1,0 +1,14 @@
+<mdl-card mdl-shadow="2">
+    <h4 class="text-primary">Add Post</h4>
+    <mdl-card-supporting-text>
+		<form (ngSubmit) = "onSubmit()">
+			<div class="row">
+				<mdl-textfield type="text" label="Add Title" [(ngModel)]="post.title" name="title" floating-label></mdl-textfield>
+				<mdl-textfield type="text" label="Add Description" [(ngModel)]="post.description" name="description" floating-label></mdl-textfield>
+				<button type="submit" name="submit" class="success" mdl-button mdl-button-type="raised" mdl-ripple [disabled]="!post.title || !post.description">
+					Add
+				</button>
+			</div>
+		</form>
+    </mdl-card-supporting-text>
+</mdl-card>

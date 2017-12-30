@@ -1,3 +1,23 @@
-<p>
-  user-profile works!
-</p>
+<div class="user-container" *ngIf="authService.user | async as user" mdl-shadow="4">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col">
+            <div class="user-detailes">
+                <img [src]="user.photoURL"><br>
+                <h4>{{ user.displayName }}</h4>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--8-col">
+            <div class="user-update">
+                <form (ngSubmit)="updateUserData(user)">
+                    <mdl-textfield type="text" label="Name" [(ngModel)]="user.displayName" name="displayName" floating-label></mdl-textfield><br>
+                    <mdl-textfield type="email" label="Email" [(ngModel)]="user.email" name="email" floating-label></mdl-textfield><br>
+                    <mdl-textfield type="text" label="Password" [(ngModel)]="user.password" name="password" floating-label></mdl-textfield><br>
+                    <mdl-textfield type="text" label="Photo Url" [(ngModel)]="user.photoURL" name="photoURL" floating-label></mdl-textfield><br>
+                    <button type="submit" name="submit" class="primary" mdl-button mdl-button-type="raised" mdl-ripple>
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

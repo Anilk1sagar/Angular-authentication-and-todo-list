@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
@@ -10,6 +11,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 import { AuthService } from './services/auth.service';
+import { PostService } from './services/post.service';
+import { ProfileService } from './services/profile.service';
 import { routes } from './app.routes';
 import { AuthGuard } from './auth.guard';
 
@@ -22,6 +25,9 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { MoviesComponent } from './movies/movies.component';
 import { StarReviewComponent } from './star-review/star-review.component';
 import { StarService } from './services/star.service';
+import { PostsComponent } from './blog/posts/posts.component';
+import { AddPostComponent } from './blog/add-post/add-post.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 export const firebaseConfig = {
 	production: false,
@@ -42,19 +48,23 @@ export const firebaseConfig = {
 		SignupComponent,
 		UserProfileComponent,
 		MoviesComponent,
-		StarReviewComponent
+		StarReviewComponent,
+		PostsComponent,
+		AddPostComponent,
+		NavbarComponent
 	],
 	imports: [
 		BrowserModule,
 		FormsModule,
 		HttpModule,
+		BrowserAnimationsModule,
 		AngularFireModule.initializeApp(firebaseConfig),
 		AngularFireAuthModule,
 		AngularFirestoreModule,
 		routes,
 		MdlModule,
 	],
-	providers: [AuthService, AuthGuard, AngularFireDatabase, StarService],
+	providers: [AuthService, AuthGuard, AngularFireDatabase, StarService, PostService, ProfileService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 import { Observable } from 'rxjs/Observable';
 
 export interface Star {
-	userId: any;
+	userEmail: any;
 	movieId: any;
 	value: number;
 }
@@ -14,8 +14,8 @@ export class StarService {
 	constructor(private afs: AngularFirestore) { }
 
 	// Star reviews that belong to a user
-	getUserStars(userId) {
-		const starsRef = this.afs.collection('stars', ref => ref.where('userId', '==', userId) );
+	getUserStars(userEmail) {
+		const starsRef = this.afs.collection('stars', ref => ref.where('userEmail', '==', userEmail) );
 		return starsRef.valueChanges();
 	}
 	
@@ -26,11 +26,11 @@ export class StarService {
 	}
 
 	// Create or update star
-	setStar(userId, movieId, value) {
+	setStar(userEmail, movieId, value) {
 		// Star document data
-		const star: Star = { userId, movieId, value };
+		const star: Star = { userEmail, movieId, value };
 		// Custom doc ID for relationship
-		const starPath = `stars/${star.userId}_${star.movieId}`;
+		const starPath = `stars/${star.userEmail}_${star.movieId}`;
 		// Set the data, return the promise
 		return this.afs.doc(starPath).set(star)
 	}

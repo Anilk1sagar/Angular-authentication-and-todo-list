@@ -1,22 +1,23 @@
-<div *ngIf="!(authService.user | async)" class="login-container">
-    <h3>Log In</h3>
-    <mdl-textfield type="text" label="Email" [(ngModel)]="email" floating-label></mdl-textfield><br>
-    <mdl-textfield type="password" label="Password" [(ngModel)]="password" floating-label></mdl-textfield><br>
-    <button mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple (click)="login()" [disabled]="!email || !password">
-        Login
-    </button>
-    <a routerLink="/signup" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Signup</a>
-    <hr>
-    <button style="background-color: #DD4B39;color: #fff;" mdl-button mdl-button-type="raised" mdl-ripple (click)="googleLogin()">
-            <i class="fa fa-google" aria-hidden="true" style="margin-right: 8px;"></i> Sign with google
-    </button>
-    <button style="background-color: #4C69BA;color: #fff;" mdl-button mdl-button-type="raised" mdl-ripple (click)="facebookLogin()">
-            <i class="fa fa-facebook" aria-hidden="true" style="margin-right: 8px;"></i> Sign with facebook
-    </button>
-</div>
+<div class="login-body">
+    <div *ngIf="!(authService.user | async)" class="login-container">
+        <h4>Log In</h4>
+        <mdl-textfield type="text" label="Email" [(ngModel)]="email" floating-label></mdl-textfield><br>
+        <mdl-textfield type="password" label="Password" [(ngModel)]="password" floating-label></mdl-textfield><br>
+        <button mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple (click)="login()" [disabled]="!email || !password">
+            Login
+        </button><br><br>
 
-<!-- If user logged in -->
-<div *ngIf="(authService.user | async)">
-    <h3>You are already Logged In please go back to</h3>
-    <a mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple routerLink="/home">Home</a>
+        <hr class="hr-text" data-content="Create Account!">
+        <button routerLink="/signup" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Signup</button><br><br>
+        
+        <hr class="hr-text" data-content="Use Social Signin!">
+        <div class="social-btn">
+            <a style="background-color: #DD4B39;color: #fff;" mdl-button mdl-button-type="raised" mdl-ripple (click)="googleLogin()">
+                    <i class="fa fa-google" aria-hidden="true" style="margin-right: 8px;"></i> Sign with google
+            </a>
+            <a style="background-color: #4C69BA;color: #fff;" mdl-button mdl-button-type="raised" mdl-ripple (click)="facebookLogin()">
+                    <i class="fa fa-facebook" aria-hidden="true" style="margin-right: 8px;"></i> Sign with facebook
+            </a>
+        </div>
+    </div>
 </div>
